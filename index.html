@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
-    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
-    crossorigin="anonymous"></script>
     <title>Tic-Tac-Toe</title>
     <style>
         #board {
@@ -23,6 +20,16 @@
             cursor: pointer;
         }
     </style>
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <div id="board">
+        <!-- Create the 3x3 grid -->
+    </div>
+    <p id="turn">It's X's turn</p>
+    <button id="reset">New Game</button>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script>
         // Create the game board
         const board = document.getElementById("board");
@@ -112,18 +119,6 @@
 
         // Initialize the game
         resetGame();
-
     </script>
-    </head>
-    <body>
-        <h1>Tic Tac Toe</h1>
-        <div id="board">
-            <!-- Create the 3x3 grid -->
-        </div>
-        <p id="turn">It's X's turn</p>
-        <input type="button" class="reset btn btn-lg 
-                                                btn-danger btn-block" 
-                           value="New Game"
-                           onClick="reset()" />
-    </body>
+</body>
 </html>
