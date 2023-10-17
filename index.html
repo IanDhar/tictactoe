@@ -23,8 +23,13 @@
     </style>
 </head>
 <body>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script>
+        <h1>Tic Tac Toe</h1>
+        <div id="board">
+        </div>
+        <p id="turn">It's X's turn</p>
+        <button id="reset">New Game</button>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script>
         // Initialize the game board
         const board = document.getElementById("board");
         const resetButton = document.getElementById("reset");
@@ -102,11 +107,5 @@
         // Initialize the game
         resetGame();
     </script>
-    
-    <h1>Tic Tac Toe</h1>
-    <div id="board">
-    </div>
-    <p id="turn">It's X's turn</p>
-    <button id="reset">New Game</button>
 </body>
 </html>
