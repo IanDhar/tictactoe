@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <style>
+        #board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            width: 300px;
+            margin: 10px auto;
+        }
+        .square {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            font-size: 2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Create the game board
+        const board = document.getElementById("board");
+        const resetButton = document.getElementById("reset");
+        const turnDisplay = document.getElementById("turn");
+
+        const playerX = "X";
+        const playerO = "O";
+        let currentPlayer = playerX;
+        let gameOver = false;
+
+        // Create the grid and initialize the game
+        for (let i = 0; i < 9; i++) {
+            const square = document.createElement("div");
+            square.classList.add("square");
+            square.setAttribute("data-index", i);
+            board.appendChild(square);
+
+            square.addEventListener("click", () => {
+                if (!gameOver && square.textContent === "") {
+                    square.textContent = currentPlayer;
+                    square.classList.add(currentPlayer);
+
+                    if (checkWin()) {
+                        gameOver = true;
+                        turnDisplay.textContent = `Player ${currentPlayer} wins!`;
+                    } else if (boardFull()) {
+                        gameOver = true;
+                        turnDisplay.textContent = "It's a tie!";
+                    } else {
+                        currentPlayer = currentPlayer === playerX ? playerO : playerX;
+                        turnDisplay.textContent = `It's ${currentPlayer}'s turn`;
+                    }
+                }
+            });
+        }
+
+        resetButton.addEventListener("click", () => {
+            resetGame();
+        });
+
+        // Function to check for a win
+        function checkWin() {
+            const squares = document.querySelectorAll(".square");
+            const winPatterns = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+
+            for (const pattern of winPatterns) {
+                const [a, b, c] = pattern;
+                if (squares[a].textContent && squares[a].textContent === squares[b].textContent && squares[a].textContent === squares[c].textContent) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Function to check if the board is full
+        function boardFull() {
+            const squares = document.querySelectorAll(".square");
+            for (const square of squares) {
+                if (square.textContent === "") {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Function to reset the game
+        function resetGame() {
+            const squares = document.querySelectorAll(".square");
+            for (const square of squares) {
+                square.textContent = "";
+                square.classList.remove(playerX, playerO);
+            }
+
+            currentPlayer = playerX;
+            gameOver = false;
+            turnDisplay.textContent = `It's ${currentPlayer}'s turn`;
+        }
+
+        // Initialize the game
+        resetGame();
+
+    </script>
+    <h1>Tic Tac Toe</h1>
+    <div id="board">
+        <!-- Create the 3x3 grid -->
+    </div>
+    <p id="turn">It's X's turn</p>
+    <button id="reset">New Game</button>
+    <script src="script.js"></script>
+</body>
+</html>
