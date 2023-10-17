@@ -23,8 +23,6 @@
             cursor: pointer;
         }
     </style>
-</head>
-<body>
     <script>
         // Create the game board
         const board = document.getElementById("board");
@@ -47,7 +45,6 @@
                 if (!gameOver && square.textContent === "") {
                     square.textContent = currentPlayer;
                     square.classList.add(currentPlayer);
-
                     if (checkWin()) {
                         gameOver = true;
                         turnDisplay.textContent = `Player ${currentPlayer} wins!`;
@@ -117,11 +114,13 @@
         resetGame();
 
     </script>
-    <h1>Tic Tac Toe</h1>
-    <div id="board">
-        <!-- Create the 3x3 grid -->
-    </div>
-    <p id="turn">It's X's turn</p>
-    <button id="reset">New Game</button>
-</body>
+    </head>
+    <body>
+        <h1>Tic Tac Toe</h1>
+        <div id="board">
+            <!-- Create the 3x3 grid -->
+        </div>
+        <p id="turn">It's X's turn</p>
+        <button id="reset">New Game</button>
+    </body>
 </html>
