@@ -55,13 +55,13 @@
                     square.classList.add(currentPlayer);
                     if (checkWin()) {
                         gameOver = true;
-                        turnDisplay.textContent = `Player ${currentPlayer} wins!`;
+                        turnDisplay.textContent.css("font-size", "2em") = `Player ${currentPlayer} wins!`;
                     } else if (boardFull()) {
                         gameOver = true;
-                        turnDisplay.textContent = "It's a tie!";
+                        turnDisplay.textContent.css("font-size", "2em") = "It's a tie!";
                     } else {
                         currentPlayer = currentPlayer === playerX ? playerO : playerX;
-                        turnDisplay.textContent = `It's ${currentPlayer}'s turn`;
+                        turnDisplay.textContent.css("font-size", "2em") = `It's ${currentPlayer}'s turn`;
                     }
                 }
             });
